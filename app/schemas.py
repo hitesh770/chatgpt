@@ -9,13 +9,14 @@ class SenderInfo(BaseModel):
     core_value_of_offer: str
     preferred_call_to_action: str = 'Direct reply to the email hitesh770@gmail.com'
     additional_sender_information: str
+    website: str = 'https://jeremyhuss.com/'
+    city: str = 'Arizona'
 
 
 class RecipientInfo(BaseModel):
-    company_name: str = 'Huss Law - Jeremy Huss'
-    city: str = 'Arizona'
+    company_name: str = 'Google Inc'
     first_name: Optional[str] = 'Rajat'
-    website: str = 'hiteshvishal.com'
+    
 
 
 class EmailResponse(BaseModel):

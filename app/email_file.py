@@ -18,7 +18,7 @@ router = APIRouter()
 
 @router.post('/emailresponse', tags=['email'], status_code=200, response_model=EmailResponse)
 async def get_email_response(request: Request, sender_info: SenderInfo, receipient_info: RecipientInfo):
-    response = requests.get(url=config.url_to_scan)
+    response = requests.get(url=sender_info.website)
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
         llm = ChatOpenAI(temperature=0, model=config.model,
@@ -33,9 +33,10 @@ async def get_email_response(request: Request, sender_info: SenderInfo, receipie
         additional_sender_information = sender_info.additional_sender_information
         first_name = sender_info.first_name
         company_name = sender_info.company_name
-        city = receipient_info.city
-        website = receipient_info.website
+        city = sender_info.city
+        website = sender_info.website
         first_name_recipient = receipient_info.first_name
+        company_name_recipient = receipient_info.company_name
 
         subject_schema = ResponseSchema(
             name='subject', description='subject of email')
