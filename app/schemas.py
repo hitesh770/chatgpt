@@ -14,8 +14,9 @@ class SenderInfo(BaseModel):
 
 
 class RecipientInfo(BaseModel):
-    company_name: str = 'Google Inc'
+    company_name: str = 'Rosenberg Law Firm -- Jonathan Rosenberg'
     first_name: Optional[str] = 'Rajat'
+    website: str = "https://rosenbergpllc.com/"
     
 
 
